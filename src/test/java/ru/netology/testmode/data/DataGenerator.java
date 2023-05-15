@@ -11,8 +11,6 @@ import org.junit.jupiter.api.BeforeAll;
 import java.util.Locale;
 
 import static io.restassured.RestAssured.given;
-import static sun.security.util.KnownOIDs.ContentType;
-
 
 public class DataGenerator {
     private static final RequestSpecification requestSpec = new RequestSpecBuilder()
@@ -23,7 +21,7 @@ public class DataGenerator {
             .log(LogDetail.ALL)
             .build();
 
-    private static final Faker faker = new Faker(new Locale("en"));
+        private static final Faker faker = new Faker(new Locale("ru"));
 
     private DataGenerator() {
     }
@@ -41,11 +39,10 @@ public class DataGenerator {
     }
 
     public static String getRandomLogin() {
-
         return faker.name().username();
     }
-    public static String getRandomPassword() {
 
+    public static String getRandomPassword() {
         return faker.internet().password();
     }
 
@@ -54,8 +51,7 @@ public class DataGenerator {
         }
 
         public static RegistrationDto getUser(String status) {
-
-            var user = new RegistrationDto(getRandomLogin(), getRandomPassword(), status);
+              var user = new RegistrationDto(getRandomLogin(), getRandomPassword(), status);
             return user;
         }
 
